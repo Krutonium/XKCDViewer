@@ -16,7 +16,7 @@ Public Class XKCD
             Dim LastComic As XKCDComic = JsonConvert.DeserializeObject(Of XKCDComic)(Comic)
             Return LastComic
         Catch ex As Exception
-            Throw New ComicNotFoundException("Info for comic " & ID & "Could not be retrieved.", ex)
+            Throw New ComicNotFoundException("Info for comic " & ID & " could not be retrieved.", ex)
         End Try
     End Function
 
