@@ -8,3 +8,5 @@ Requires Visual Studio 2015
 ![Screenshot](http://i.imgur.com/pz2qTDB.png)
 
 (Yes, if you hover over the image, the alt-text works :P)
+
+Licenced under [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt)
