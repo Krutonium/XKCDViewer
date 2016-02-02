@@ -30,6 +30,8 @@ Partial Class XKCDViewer
         Me.cmdNewset = New System.Windows.Forms.Button()
         Me.cmdFirst = New System.Windows.Forms.Button()
         Me.cmdRandom = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
+        Me.SaveDialog = New System.Windows.Forms.SaveFileDialog()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -87,19 +89,30 @@ Partial Class XKCDViewer
         '
         'cmdRandom
         '
-        Me.cmdRandom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cmdRandom.Location = New System.Drawing.Point(253, 376)
+        Me.cmdRandom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmdRandom.Location = New System.Drawing.Point(188, 376)
         Me.cmdRandom.Name = "cmdRandom"
         Me.cmdRandom.Size = New System.Drawing.Size(75, 23)
         Me.cmdRandom.TabIndex = 5
         Me.cmdRandom.Text = "Random"
         Me.cmdRandom.UseVisualStyleBackColor = True
         '
+        'cmdSave
+        '
+        Me.cmdSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdSave.Location = New System.Drawing.Point(306, 376)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(75, 23)
+        Me.cmdSave.TabIndex = 6
+        Me.cmdSave.Text = "Save"
+        Me.cmdSave.UseVisualStyleBackColor = True
+        '
         'XKCDViewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 411)
+        Me.Controls.Add(Me.cmdSave)
         Me.Controls.Add(Me.cmdRandom)
         Me.Controls.Add(Me.cmdFirst)
         Me.Controls.Add(Me.cmdNewset)
@@ -120,4 +133,6 @@ Partial Class XKCDViewer
     Friend WithEvents cmdNewset As Button
     Friend WithEvents cmdFirst As Button
     Friend WithEvents cmdRandom As Button
+    Friend WithEvents cmdSave As Button
+    Friend WithEvents SaveDialog As SaveFileDialog
 End Class

@@ -6,6 +6,7 @@ Public Class XKCDViewer
     Dim WS As New WebClient
     Dim CurrentComic As Integer
     Dim MaxComic As Integer = 0
+    Dim tImage As Bitmap
     Private Sub XKCDViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.XKCD_Favicon
         ChangeComic(0, True)
@@ -31,6 +32,16 @@ Public Class XKCDViewer
         ChangeComic(Rand.Next(1, MaxComic))
     End Sub
 
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        SaveDialog.AddExtension = True
+        SaveDialog.DefaultExt = ".png"
+        SaveDialog.FileName = "XKCD " & CurrentComic.ToString & ".png"
+        SaveDialog.ShowDialog()
+
+        tImage.Save(SaveDialog.FileName, Imaging.ImageFormat.Png)
+
+    End Sub
+
 
     Private Sub ChangeComic(ByVal ID As Integer, Optional ByVal InitialSetup As Boolean = False)
 
@@ -43,7 +54,7 @@ Public Class XKCDViewer
             Try
                 Dim XKCD As New XKCD.Net.XKCD
                 Dim Out As XKCDComic = XKCD.GetComicByID(ID)
-                Dim tImage As Bitmap = Bitmap.FromStream(New MemoryStream(WS.DownloadData(Out.img)))
+                tImage = Bitmap.FromStream(New MemoryStream(WS.DownloadData(Out.img)))
                 PictureBox1.Image = tImage
                 CurrentComic = Out.num
                 If CurrentComic = MaxComic Then
@@ -59,7 +70,7 @@ Public Class XKCDViewer
                 Me.Text = "Comic " & CurrentComic & ": " & Out.title
                 Tipper.SetToolTip(PictureBox1, Out.alt)
             Catch ex As Exception
-                Dim tImage As Bitmap = Bitmap.FromStream(New MemoryStream(WS.DownloadData("http://globalgeeknews.com/wp-content/uploads/2011/05/Super-Mario-Bros-404-error.jpg")))
+                tImage = Bitmap.FromStream(New MemoryStream(WS.DownloadData("http://globalgeeknews.com/wp-content/uploads/2011/05/Super-Mario-Bros-404-error.jpg")))
                 PictureBox1.Image = tImage
                 If CurrentComic = MaxComic Then
                     cmdNext.Enabled = False
@@ -78,6 +89,5 @@ Public Class XKCDViewer
 
         End If
     End Sub
-
 
 End Class
