@@ -6,3 +6,5 @@ Included in the XKCD.Net folder in a nice little library I wrote that allows you
 Requires Visual Studio 2015
 
 ![Screenshot](http://i.imgur.com/pz2qTDB.png)
+
+(Yes, if you hover over the image, the alt-text works :P)
